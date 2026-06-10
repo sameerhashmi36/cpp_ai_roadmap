@@ -67,3 +67,8 @@ vcpkg_installed/
 # test output & cache
 Testing/
 .cache/
+
+#
+.vscode/
+01_basics/helloagainc++
+01_basics/main
