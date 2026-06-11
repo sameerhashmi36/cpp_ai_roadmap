@@ -1,7 +1,7 @@
 #include <iostream>
 
 int main() {
-    // 1. Static Typing: We must declare the exact data type
+    // 1. Static Typing: must declare the exact data type
     double learning_rate = 0.001; 
     float activation = -1.5f;
 

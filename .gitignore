@@ -72,3 +72,5 @@ Testing/
 .vscode/
 01_basics/helloagainc++
 01_basics/main
+02_memory/memory_demo
+02_memory/model_state_demo
