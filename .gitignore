@@ -75,3 +75,5 @@ Testing/
 02_memory/memory_demo
 02_memory/model_state_demo
 03_oop/layer_demo
+04_image_processing/build
+04_image_processing/live_capture
