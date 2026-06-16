@@ -77,3 +77,5 @@ Testing/
 03_oop/layer_demo
 04_image_processing/build
 04_image_processing/live_capture
+05_libtorch_intro/build
+libtorch_sdk/
