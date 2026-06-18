@@ -4,18 +4,18 @@ project(ImageProcessingEngine CXX)
 # Set C++ standard to modern C++17
 set(CMAKE_CXX_STANDARD 17)
 
-# Look for OpenCV on your Ubuntu system automatically
+# Look for OpenCV on the Ubuntu system automatically
 find_package(OpenCV REQUIRED)
 
 # Include the OpenCV directories so the compiler can see them
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-# Tell CMake about our multi-file layout
+# Tell CMake about the multi-file layout
 add_executable(vision_app 
     main.cpp 
     ImageEngine.cpp 
     ImageEngine.h
 )
 
-# Link the core OpenCV engine binaries to our app
+# Link the core OpenCV engine binaries to the app
 target_link_libraries(vision_app ${OpenCV_LIBS})

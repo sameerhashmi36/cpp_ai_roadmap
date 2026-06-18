@@ -21,7 +21,7 @@ wget [https://download.pytorch.org/libtorch/cpu/libtorch-shared-with-deps-latest
 unzip libtorch-shared-with-deps-latest.zip && rm libtorch-shared-with-deps-latest.zip
 ```
 
-2. **Configure**: Ensure the `Torch_DIR` in `CMakeLists.txt` points to your `libtorch_sdk` folder.
+2. **Configure**: Ensure the `Torch_DIR` in `CMakeLists.txt` points to the `libtorch_sdk` folder.
 
 3. **Compile**:
 ```bash

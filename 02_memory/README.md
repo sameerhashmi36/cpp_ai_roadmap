@@ -27,7 +27,7 @@ When passing an AI model state or a tensor into a function, C++ gives absolute c
 
 ## Memory Architecture Blueprint
 
-When tracking a structured layout like our `ModelState` (containing `weight`, `bias`, and `epoch`), printing the address using the `&` operator points directly to the **front door** (the very first byte) of the structure. 
+When tracking a structured layout like the `ModelState` (containing `weight`, `bias`, and `epoch`), printing the address using the `&` operator points directly to the **front door** (the very first byte) of the structure. 
 
 The individual components are aligned sequentially immediately following that initial address:
 

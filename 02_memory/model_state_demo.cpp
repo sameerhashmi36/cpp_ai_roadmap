@@ -8,7 +8,7 @@
 
 #include <iostream>
 
-// A structure to hold our simulated deep learning model metrics
+// A structure to hold the simulated deep learning model metrics
 struct ModelState {
     float weight;
     float bias;
@@ -44,7 +44,7 @@ void updateByReference(ModelState& model_ref) {
 }
 
 int main() {
-    // Initialize our model state
+    // Initialize model state
     ModelState my_model = {0.85f, 0.1f, 1};
     
     std::cout << "=== INITIAL STATE ===" << std::endl;

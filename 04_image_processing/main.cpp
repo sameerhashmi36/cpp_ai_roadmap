@@ -7,12 +7,12 @@ int main() {
     std::cout << "=========================================" << std::endl;
 
     // 1. Instantiate the Object
-    // This allocates memory for our class and runs the constructor.
+    // This allocates memory for the class and runs the constructor.
     // Equivalent to Python's: engine = ImageEngine()
     ImageEngine engine;
 
     // 2. Capture Input Data
-    // This will either grab your real webcam frame or generate our synthetic matrix data
+    // This will either grab the real webcam frame or generate the synthetic matrix data
     engine.captureInput();
 
     // 3. Apply Data Augmentation

@@ -3,7 +3,7 @@
 
 int main() {
     std::cout << "=== Opening Live Camera Stream ===" << std::endl;
-    std::cout << "Press the 'q' key on your keyboard to exit!" << std::endl;
+    std::cout << "Press the 'q' key on the keyboard to exit!" << std::endl;
 
     // 1. Open the default camera stream (Index 0)
     cv::VideoCapture cap(0);
@@ -22,7 +22,7 @@ int main() {
 
     // 3. The Continuous Stream Loop (Equivalent to Python's: while True)
     while (true) {
-        // Grab the latest frame from the camera stream and load it into our matrix
+        // Grab the latest frame from the camera stream and load it into the matrix
         cap >> frame;
 
         if (frame.empty()) {
@@ -30,7 +30,7 @@ int main() {
             break;
         }
 
-        // Display the matrix frame inside our window (Just like cv2.imshow in Python)
+        // Display the matrix frame inside the window (Just like cv2.imshow in Python)
         cv::imshow("Live Video Feed", frame);
 
         // Wait 30 milliseconds for a keypress. If 'q' is pressed, break the loop.

@@ -1,0 +1,83 @@
+# Step 1: Navigate to the internal LibTorch library folder
+cd /home/sameer/Documents/cpp_ai_roadmap/libtorch_sdk/libtorch/lib
+
+# Step 2: Ensure the NVSHMEM library is restored to its proper name so CMake can find it
+mv libtorch_nvshmem.so.bak libtorch_nvshmem.so 2>/dev/null || true
+
+# Step 3: Create a system shortcut for the missing cuSPARSELt runtime library from your Conda environment
+sudo ln -s /home/sameer/miniconda3/envs/test/lib/python3.10/site-packages/nvidia/cusparselt/lib/libcusparseLt.so.0 /usr/local/cuda-12.6/lib64/libcusparseLt.so.0
+
+# Step 4: Create a secondary generic shortcut for cuSPARSELt to handle future linker variations
+sudo ln -s /home/sameer/miniconda3/envs/test/lib/python3.10/site-packages/nvidia/cusparselt/lib/libcusparseLt.so.0 /usr/local/cuda-12.6/lib64/libcusparseLt.so
+
+# Step 5: Create a system shortcut for the missing NVSHMEM host runtime library from your Conda environment
+sudo ln -s /home/sameer/miniconda3/envs/test/lib/python3.10/site-packages/nvidia/nvshmem/lib/libnvshmem_host.so.3 /usr/local/cuda-12.6/lib64/libnvshmem_host.so.3
+
+# Step 6: Create a secondary generic shortcut for the NVSHMEM host library
+sudo ln -s /home/sameer/miniconda3/envs/test/lib/python3.10/site-packages/nvidia/nvshmem/lib/libnvshmem_host.so.3 /usr/local/cuda-12.6/lib64/libnvshmem_host.so
+
+# Step 7: Clear and reload the operating system's dynamic shared library cache to activate the new shortcuts
+sudo ldconfig
+
+# Step 8: Install cuDNN and NCCL from the NVIDIA repository
+sudo apt update
+sudo apt install -y cudnn9-cuda-12 libnccl2 libnccl-dev
+
+# Step 9: Create symbolic links for cuDNN and NCCL in the CUDA library directory
+sudo ln -s /usr/lib/x86_64-linux-gnu/libcudnn.so.9 /usr/local/cuda-12.6/lib64/libcudnn.so.9
+sudo ln -s /usr/lib/x86_64-linux-gnu/libcudnn.so /usr/local/cuda-12.6/lib64/libcudnn.so
+sudo ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda-12.6/lib64/libnccl.so.2
+sudo ln -s /usr/lib/x86_64-linux-gnu/libnccl.so /usr/local/cuda-12.6/lib64/libnccl.so
+
+# Step 10: Reload the library cache again with all libraries in place
+sudo ldconfig
+
+# Step 11: Navigate directly into your project's compilation build directory
+cd ~/Documents/cpp_ai_roadmap/05_libtorch_intro/build
+
+# Step 12: Wipe out any old, corrupted CMake caches and object files completely
+rm -rf *
+
+# Step 13: Set environment variables for library paths
+export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:/usr/lib/x86_64-linux-gnu:$LD_LIBRARY_PATH
+
+# Step 14: Run CMake configuration while forcing it to use GCC-12 as the host compiler and tracking CUDA 12.6
+cmake -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-12 \
+      -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-12.6 \
+      -DCMAKE_EXE_LINKER_FLAGS="-Wl,-rpath,/usr/local/cuda-12.6/lib64 -Wl,-rpath,/usr/lib/x86_64-linux-gnu" ..
+
+# Step 15: Build both executable application targets across all available CPU cores
+make -j$(nproc)
+
+# Step 16: Launch the compiled GPU acceleration matrix math application binary
+./device_math_app
+
+
+
+
+If the apt installation fails, try adding the NVIDIA repository first:
+
+# Add NVIDIA repository for cuDNN
+wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64/cuda-keyring_1.1-1_all.deb
+sudo dpkg -i cuda-keyring_1.1-1_all.deb
+sudo apt update
+
+# Then retry Step 8
+sudo apt install -y cudnn9-cuda-12 libnccl2 libnccl-dev
+
+
+If cuDNN/NCCL Are Already Installed
+
+# Find where cuDNN and NCCL are installed
+find /usr -name "libcudnn.so*" 2>/dev/null
+find /usr -name "libnccl.so*" 2>/dev/null
+
+# Usually they're in /usr/lib/x86_64-linux-gnu/
+# Create symbolic links
+sudo ln -s /usr/lib/x86_64-linux-gnu/libcudnn.so.9 /usr/local/cuda-12.6/lib64/libcudnn.so.9
+sudo ln -s /usr/lib/x86_64-linux-gnu/libnccl.so.2 /usr/local/cuda-12.6/lib64/libnccl.so.2
+sudo ldconfig
+
+and then run again,
+
+./device_math_app
