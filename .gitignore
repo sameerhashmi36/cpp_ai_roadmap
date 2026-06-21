@@ -79,3 +79,5 @@ Testing/
 04_image_processing/live_capture
 05_libtorch_intro/build
 libtorch_sdk/
+06_image_to_tensor/build
+06_image_to_tensor/test.jpg
