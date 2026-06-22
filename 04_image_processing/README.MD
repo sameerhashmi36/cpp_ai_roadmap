@@ -8,8 +8,8 @@ This module explores how production computer vision pipelines interface with har
 
 Unlike Python, which translates text scripts line-by-line during runtime, **C++ is a compiled language**. The CPU cannot read C++ source code directly. The code must be translated entirely ahead of time into a standalone binary file containing raw machine code instructions (`0`s and `1`s).
 
-### Why do we need the build tools?
-* **Single-File Track:** The compiler (`g++`) needs to be told exactly where external libraries like OpenCV live on Ubuntu. We use `pkg-config` to automatically fetch those folder paths.
+### Why do I need the build tools?
+* **Single-File Track:** The compiler (`g++`) needs to be told exactly where external libraries like OpenCV live on Ubuntu. I use `pkg-config` to automatically fetch those folder paths.
 * **Multi-File Track:** When code is split into headers (`.h`) and implementations (`.cpp`), the files are completely blind to each other. **CMake** acts as the project architect, telling the compiler how to stitch all files and libraries together into a single cohesive application.
 
 ---
@@ -48,7 +48,7 @@ In production AI frameworks, logic is separated into distinct modules to maintai
 3. main.cpp: The Conductor (Instantiates the class object and coordinates the execution pipeline).
 
 ### Compilation Commands (Using CMake)
-Because this setup contains multiple files tracking across external libraries, we use CMake to manage the generation details safely inside an isolated environment:
+Because this setup contains multiple files tracking across external libraries, use CMake to manage the generation details safely inside an isolated environment:
 
 ```
 # 1. Enter the isolated build folder

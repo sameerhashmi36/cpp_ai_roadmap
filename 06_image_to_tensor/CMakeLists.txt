@@ -15,8 +15,8 @@ find_package(OpenCV REQUIRED)
 # Create the executable target binary
 add_executable(image_to_tensor_app image_to_tensor.cpp)
 
-# Link both LibTorch and OpenCV libraries to our application binary
+# Link both LibTorch and OpenCV libraries to the application binary
 target_link_libraries(image_to_tensor_app "${TORCH_LIBRARIES}" ${OpenCV_LIBS})
 
-# Apply our NVSHMEM cluster bypass fix to this target
+# Apply the NVSHMEM cluster bypass fix to this target
 target_link_options(image_to_tensor_app PRIVATE "-Wl,--allow-shlib-undefined")

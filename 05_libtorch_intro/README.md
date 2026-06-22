@@ -1,6 +1,6 @@
 # 05_LibTorch_Intro: PyTorch C++ Backend
 
-This module introduces **High-Performance C++ Inference**. By using LibTorch, we interact directly with the C++ backend that powers PyTorch.
+This module introduces **High-Performance C++ Inference**. By using LibTorch, it interact directly with the C++ backend that powers PyTorch.
 
 ## Key Achievements
 * **Library Integration**: Successfully linked the `LibTorch` SDK using CMake.
@@ -12,7 +12,7 @@ This module introduces **High-Performance C++ Inference**. By using LibTorch, we
 Here is exactly how I initialized, linked, and executed my first LibTorch application:
 
 1. **SDK Installation & Environment Setup**:
-To isolate the neural network infrastructure dependencies, we pulled down the pre-compiled LibTorch binaries from the official PyTorch distribution channels:
+To isolate the neural network infrastructure dependencies, that pulled down the pre-compiled LibTorch binaries from the official PyTorch distribution channels:
 ```bash
 mkdir -p libtorch_sdk && cd libtorch_sdk
 

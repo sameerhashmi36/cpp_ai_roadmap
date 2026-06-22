@@ -4,7 +4,7 @@
 #include <opencv2/opencv.hpp>
 #include <string>
 
-// We define a clean OOP Class for managing the vision operations
+// Defining a clean OOP Class for managing the vision operations
 class ImageEngine {
 private:
     // Encapsulation: The raw image frame is protected inside the class

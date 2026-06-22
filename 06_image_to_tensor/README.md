@@ -27,7 +27,7 @@ Deep learning models require data to be formatted in a highly specific configura
 ## Build and Execution Guide
 
 ### 1. Place a Test Image
-Ensure a valid image file named `test.jpg` is present inside your build folder, or use the automated retrieval command:
+Ensure a valid image file named `test.jpg` is present inside the folder, or use the automated retrieval command:
 ```bash
 cd ~/Documents/cpp_ai_roadmap/06_image_to_tensor/build
 cmake -DCMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-12 -DCUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-12.6 ..

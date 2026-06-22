@@ -16,7 +16,7 @@ int main() {
     engine.captureInput();
 
     // 3. Apply Data Augmentation
-    // We pass a positive value to increase pixel intensities (simulating direct bright light adjustment)
+    // Pass a positive value to increase pixel intensities (simulating direct bright light adjustment)
     engine.applyBrightness(100.0);
 
     // 4. Export the final matrix payload out to a physical file

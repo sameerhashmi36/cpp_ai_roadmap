@@ -81,3 +81,6 @@ Testing/
 libtorch_sdk/
 06_image_to_tensor/build
 06_image_to_tensor/test.jpg
+07_model_inference/build
+07_model_inference/yolov8m.pt
+07_model_inference/yolov8n.pt

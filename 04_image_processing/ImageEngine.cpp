@@ -17,7 +17,7 @@ void ImageEngine::captureInput() {
     if (!cap.isOpened()) {
         std::cout << "[Warning] No physical webcam detected. Generating a synthetic image..." << std::endl;
         // Fallback: Create a synthetic 480x640 3-channel (BGR) solid gray matrix image (Value: 128)
-        // We write directly into the private member variable 'raw_frame'
+        // Write directly into the private member variable 'raw_frame'
         raw_frame = cv::Mat(480, 640, CV_8UC3, cv::Scalar(128, 128, 128));
     } else {
         std::cout << "[Success] Webcam connected. Capturing frame..." << std::endl;
@@ -28,7 +28,7 @@ void ImageEngine::captureInput() {
 
 // 3. BRIGHTNESS DATA AUGMENTATION IMPLEMENTATION
 void ImageEngine::applyBrightness(double amount) {
-    // Check if we have image data inside the private variable before processing
+    // Check if this have image data inside the private variable before processing
     if (raw_frame.empty()) {
         std::cerr << "[Error] Cannot modify brightness. No frame captured yet!" << std::endl;
         return;
