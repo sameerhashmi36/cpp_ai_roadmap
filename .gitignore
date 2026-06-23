@@ -84,3 +84,5 @@ libtorch_sdk/
 07_model_inference/build
 07_model_inference/yolov8m.pt
 07_model_inference/yolov8n.pt
+08_video_stream_inference/build
+08_video_stream_inference/sample.mp4
